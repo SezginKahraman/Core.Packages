@@ -28,6 +28,6 @@ namespace Core.Persistance.Dynamic
 
         public string? Logic { get; set; } // && , || etc.
 
-        public IEnumerable<Filter> Filters { get; set; }
+        public IEnumerable<Filter>? Filters { get; set; }
     }
 }
