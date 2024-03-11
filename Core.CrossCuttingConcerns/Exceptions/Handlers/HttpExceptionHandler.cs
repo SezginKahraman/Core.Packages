@@ -27,6 +27,13 @@ namespace Core.CrossCuttingConcerns.Exceptions.Handlers
             return Response.WriteAsync(details);
         }
 
+        protected override Task HandleException(ValidationException validationException)
+        {
+            _response.StatusCode = StatusCodes.Status400BadRequest;
+            string details = new ValidationProblemDetails(validationException.Errors).AsJson();
+            return Response.WriteAsync(details);
+        }
+
         protected override Task HandleException(Exception exception)
         {
             _response.StatusCode = StatusCodes.Status500InternalServerError;
