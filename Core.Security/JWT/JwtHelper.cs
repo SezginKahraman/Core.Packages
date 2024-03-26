@@ -70,7 +70,7 @@ namespace Core.Security.JWT
             claims.AddNameIdentifier(user.Id.ToString());
             claims.AddEmail(user.Email);
             claims.AddName($"{user.FirstName} {user.LastName}");
-            claims.AddRole($"{user.FirstName} {user.LastName}");
+            claims.AddRole($"{user.FirstName} {user.LastName}"); // will be added.
             claims.AddOperationalClaims(operationClaims.Select(c => c.Name).ToArray());
             return claims;
         }

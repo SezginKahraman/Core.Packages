@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Security.Constants;
 
 namespace Core.Security.Extensions
 {
@@ -13,9 +14,9 @@ namespace Core.Security.Extensions
              claimsPrincipal?.FindAll(claimType).Select(t => t.Value).ToList();
 
         public static List<string>? ClaimRoles(this ClaimsPrincipal claimsPrincipal) =>
-            claimsPrincipal?.Claims(ClaimTypes.Role);
+            claimsPrincipal?.Claims(ClaimNames.Role);
 
         public static int GetUserId(this ClaimsPrincipal claimsPrincipal) =>
-            Convert.ToInt32(claimsPrincipal?.Claims(ClaimTypes.NameIdentifier)?.FirstOrDefault());
+            Convert.ToInt32(claimsPrincipal?.Claims(ClaimNames.NameIdentifier)?.FirstOrDefault());
     }
 }
