@@ -24,6 +24,7 @@ namespace Core.Application.Pipelines.Authorization
         public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
             List<string>? userRoleClaims = _contextAccessor.HttpContext.User.ClaimRoles();
+            //List<string>? userRoleClaims = _contextAccessor.HttpContext.User.ClaimOperationalClaims(); // todo
 
             if (userRoleClaims == null)
                 throw new AuthorizationException("Not Authenticated!");
